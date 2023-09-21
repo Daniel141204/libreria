@@ -8,58 +8,39 @@ import seaborn as sns #mapas de calor
 
 #***FUNCIONES***
 
-#función que se encarga de recoger el nombre del cvs o la url
+#función que se encarga de recoger el nombre del cvs o la url, con el código y limite
+
+def openCSV(nombre=None, codigo=None, limite=None): #Parametros nombre(nombre del archivo ó URL), en caso de ser url, pide el id, y puede pedir también el límite
+    if nombre and not codigo and not limite: #Cuando solo hay 'nombre', asume que es un archivo.csv y utiliza el método de pandas
+        try:
+            dataset=pd.read_csv(nombre)
+        except FileNotFoundError: #Si no encuentra un archivo, retorna false
+            dataset=False
+        return dataset
+    elif nombre and codigo and not limite: #Cuando hay 'nombre' y 'código', asume que es un dataset remoto y utiliza el método de Socrata, mas obtiene el dataset completo
+        try:
+            client=Socrata(nombre, None)
+            results=client.get(codigo)
+            dataset=pd.DataFrame.from_records(results)
+        except ConnectionError: #Si hay un error de conexión, retorna false
+            dataset=False
+        return dataset
+    elif nombre and codigo and limite: #Cuando hay 'nombre' y 'código', asume que es un dataset remoto y utiliza el método de Socrata limitando el dataset a lo indicado en 'limite'
+        try:
+            client=Socrata(nombre, None)
+            results=client.get(codigo, limit=limite)
+            dataset=pd.DataFrame.from_records(results)
+        except ConnectionError: #Si hay un error de conexión, retorna false
+            dataset=False
+        return dataset
+    else:
+        return False #Si ninguna de las condiciones se cumple retorna false
+
 """
-def recogerDataset(nombre): 
-    
-    dataset=abrirCVS(nombre)
-    if dataset==False:
-       dataset=abrirURL(nombre)
-       if dataset==False:
-           print("No se encontró ningún archivo con el nombre brindado o con dicha URL")
-       else:    
-           print("The dataset has been open successfully.")
-               
-
-    try:
-        dataset=abrirCVS(nombre)
-    except Exception as err:
-        dataset=abrirURL(nombre)
-    return "yo"
-    """
-
-#función que se encarga de abrir cvs
-def abrirCVS(nombre):
-    try:
-        dataset=pd.read_csv(nombre)
-    except FileNotFoundError:
-        dataset=False
-    return dataset
-
-
-#función que se encarga de abrir una url
-def abrirCVS(url, codigo):
-    try:
-        client=Socrata(url, None)
-        results=client.get(codigo)
-        dataset=pd.DataFrame.from_records(results)
-    except FileNotFoundError:
-        dataset=False
-    return dataset
-
-
-#función que se encarga de abrir una url con limite
-def abrirCVS(url, codigo, limite):
-    try:
-        client=Socrata(url, None)
-        results=client.get(codigo, limit=limite)
-        dataset=pd.DataFrame.from_records(results)
-    except ConnectionError:
-        dataset=False
-    return dataset
-
 print("hola soy una prueba\n")
-d1=(abrirCVS('www.datos.gov.co','gt2j-8ykr', 50))
-d1
+#d1=abrirCSV('www.datos.gov.co','ebsr-7cb7')
+d1=abrirCSV('data.csv')
+print(d1)
 print("ya abrí jajaj")
+"""
 
