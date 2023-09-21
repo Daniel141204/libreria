@@ -25,7 +25,6 @@ def where(dataset, columna, condicion, valor, valor_reemplazo, columna_a_remplaz
     if not columna_a_remplazar:
         resultado = dataset.where(funcion(dataset[columna], valor), valor_reemplazo)
     else:
-        #resultado = dataset[columna_a_remplazar].where(funcion(dataset[columna], valor), valor_reemplazo)
         dataset[columna_a_remplazar] = dataset[columna_a_remplazar].where(funcion(dataset[columna], valor), valor_reemplazo)
         resultado=dataset
        
