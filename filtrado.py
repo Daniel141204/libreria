@@ -7,7 +7,7 @@ import numpy as np #Manejo de matrices, vectores y otras operaciones matematicas
 
 #funcion que mediante where todo lo que no cumpla con la condición se reemplaza
 
-def where(dataset, columna, condicion, valor, valor_reemplazo):
+def where(dataset, columna, condicion, valor, valor_reemplazo, columna_a_remplazar=None):
     # Diccionario que asocia cada tipo de condición con la función correspondiente de pandas
     condiciones = {
         '<': pd.Series.lt,
@@ -22,12 +22,16 @@ def where(dataset, columna, condicion, valor, valor_reemplazo):
     funcion = condiciones[condicion]
     
     # Aplicar la condición a la columna y el valor especificados
-    resultado = dataset.where(funcion(dataset[columna], valor), valor_reemplazo)
-    
-    
+    if not columna_a_remplazar:
+        resultado = dataset.where(funcion(dataset[columna], valor), valor_reemplazo)
+    else:
+        #resultado = dataset[columna_a_remplazar].where(funcion(dataset[columna], valor), valor_reemplazo)
+        dataset[columna_a_remplazar] = dataset[columna_a_remplazar].where(funcion(dataset[columna], valor), valor_reemplazo)
+        resultado=dataset
+       
     return resultado
 
 dataset=pd.read_csv('data.csv')
-d1=where(dataset, 'Age', '>=', 50, 0)
+d1=where(dataset, 'Age', '>=', 50, 0, 'Intensity')
 print(d1)
 #dataset.where(dataset['Age']>30, 0)
