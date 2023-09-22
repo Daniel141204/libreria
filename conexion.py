@@ -55,16 +55,18 @@ def openCSV(nombre=None, codigo=None, Index=None, limite=None): #Parametros nomb
     elif nombre and codigo and Index and not limite: #Cuando hay 'nombre' y 'código', asume que es un dataset remoto y utiliza el método de Socrata limitando el dataset a lo indicado en 'limite'
         try:
             client=Socrata(nombre, None)
-            results=client.get(codigo, index=Index)
+            results=client.get(codigo)
             dataset=pd.DataFrame.from_records(results)
+            dataset=dataset.set_index(Index)
         except ConnectionError: #Si hay un error de conexión, retorna false
             dataset=False
         return dataset        
     elif nombre and codigo and Index and limite:
         try:
             client=Socrata(nombre, None)
-            results=client.get(codigo, limit=limite, index=Index)
+            results=client.get(codigo, limit=limite)
             dataset=pd.DataFrame.from_records(results)
+            dataset=dataset.set_index(Index)
         except ConnectionError: #Si hay un error de conexión, retorna false
             dataset=False
         return dataset 
@@ -75,8 +77,8 @@ def openCSV(nombre=None, codigo=None, Index=None, limite=None): #Parametros nomb
 
 #ORDEN FUNCIÓN: nombre, codigo, index, limite
 
-#d1=openCSV('www.datos.gov.co','ebsr-7cb7',None , 10)
-#d1=openCSV('data.csv', None, None, 50)
+#d1=openCSV('www.datos.gov.co','9ssf-i6c5','cedula', 20)
+#d1=openCSV('Base_de_datos_beneficiarios_Colombia_mayor..csv', None, 'cedula', 20)
 #print(d1)
 
 

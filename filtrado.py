@@ -53,24 +53,37 @@ def mask(dataset, columna, condicion, valor, valor_reemplazo, columna_a_remplaza
        
     return resultado
 
-def isinEXC(lim1,lim2,columna=None):
+def isinEXC(dataset,lim1,lim2,columna=None):
     if not columna:
         resultado=dataset.isin([lim1,lim2])
     else:
         resultado=dataset.isin({columna: [lim1, lim2]})
     return resultado
 
-def isinRANGE(lim1,lim2,columna=None):
+def isinRANGE(dataset,lim1,lim2,columna=None):
     if not columna:
         resultado=dataset.isin(list(range(lim1,lim2)))
     else:
         resultado=dataset.isin({columna: list(range(lim1,lim2))})
-    return resultado  
+    return resultado
+
+def max(dataset, columnmax, nom_condicion=None, condicion=None):
+    if not nom_condicion and not condicion:
+        resultado=dataset[columnmax].max()
+    elif (nom_condicion and not condicion) or (not nom_condicion and condicion):
+        resultado=False
+    else:
+        item = dataset[dataset[nom_condicion]==condicion]
+        resultado=item[item[columnmax]==item[columnmax].max()]
+    return resultado
 
 
 
+
+data=pd.read_csv('data.csv')
+d1=max(data, 'Age', 'Intensity', 3)
+print(d1)
 """
-dataset=pd.read_csv('data.csv')
 d1=mask(dataset, 'Age', '>=', 50, 0, 'Intensity')
 d1=isinEXC(0,2,'Location')
 d1=isinRANGE(0,2,'Location')
