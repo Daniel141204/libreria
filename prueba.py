@@ -60,6 +60,32 @@ print("Función en columna + condición:\n")
 d8=f.max(d1, 'Age','Intensity', 3)
 print(d8)
 
-print(d1)
+#Busca el mínimo de una columna
+print("Función en columna:\n")
+d9=f.min(d1, 'Age')
+print(d9)
 
-#d3=filtrado.cumsum(d1,'Age')
+#Busca el mínimo de una columna con una condición
+print("Función en columna + condición:\n")
+d10=f.min(d1, 'Age','Intensity', 2)
+print(d10)
+
+#Suma los valores de una columna
+print("Función en columna:\n")
+d11=f.sum(d1, 'Age')
+print(d11)
+
+#Suma los valores de una columna con una condición
+print("Función en columna + condición:\n")
+d12=f.sum(d1, 'Age', 'Intensity', 2)
+print(d12)
+
+#Suma acumulada de los valores de una columna
+print("Función en columna:\n")
+d13=f.cumsum(d1, 'Age')
+print(d13)
+
+#Suma acumulada de los valores de una columna con una condición
+print("Función en columna + condición:\n")
+d14=f.cumsum(d1, 'Age', 'Intensity', 2)
+print(d14)
