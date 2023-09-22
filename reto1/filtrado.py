@@ -121,11 +121,12 @@ def cumsum(dataset, columnsum, nom_condicion=None, condicion=None):
 #cumsum: dataset, columnsum, nom_condicion, condicion
 
 
-"""
+
 data=pd.read_csv('data.csv')
-d1=mask(dataset, 'Age', '>=', 50, 0, 'Intensity')
+d1=where(data, 'Age', '>=', 50, 0, 'Intensity')
+print(d1)
+"""
 d1=isinEXC(0,2,'Location')
 d1=isinRANGE(0,2,'Location')
-print(d1)
-dataset.where(dataset['Age']>30, 0)
+
 """
