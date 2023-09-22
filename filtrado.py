@@ -68,8 +68,9 @@ def isinRANGE(lim1,lim2,columna=None):
     return resultado  
 
 
-dataset=pd.read_csv('data.csv')
+
 """
+dataset=pd.read_csv('data.csv')
 d1=mask(dataset, 'Age', '>=', 50, 0, 'Intensity')
 d1=isinEXC(0,2,'Location')
 d1=isinRANGE(0,2,'Location')
