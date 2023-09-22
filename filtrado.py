@@ -77,13 +77,52 @@ def max(dataset, columnmax, nom_condicion=None, condicion=None):
         resultado=item[item[columnmax]==item[columnmax].max()]
     return resultado
 
+def min(dataset, columnmin, nom_condicion=None, condicion=None):
+    if not nom_condicion and not condicion:
+        resultado=dataset[columnmin].min()
+    elif (nom_condicion and not condicion) or (not nom_condicion and condicion):
+        resultado=False
+    else:
+        item = dataset[dataset[nom_condicion]==condicion]
+        resultado=item[item[columnmin]==item[columnmin].min()]
+    return resultado
+
+def sum(dataset, columnsum, nom_condicion=None, condicion=None):
+    if not nom_condicion and not condicion:
+        resultado=dataset[columnsum].sum()
+    elif (nom_condicion and not condicion) or (not nom_condicion and condicion):
+        resultado=False
+    else:
+        resultado=dataset[columnsum][dataset[nom_condicion] == condicion].sum()
+
+    return resultado
+
+def cumsum(dataset, columnsum, nom_condicion=None, condicion=None):
+    if not nom_condicion and not condicion:
+        resultado=dataset[columnsum].cumsum()
+    elif (nom_condicion and not condicion) or (not nom_condicion and condicion):
+        resultado=False
+    else:
+        resultado=dataset[columnsum][dataset[nom_condicion] == condicion].cumsum()
+
+    return resultado
 
 
 
-data=pd.read_csv('data.csv')
-d1=max(data, 'Age', 'Intensity', 3)
-print(d1)
+#***ESTRUCTURA FUNCIONES***
+
+#where: dataset, columna, condicion, valor, valor_reemplazo, columna_a_remplazar
+#mask: dataset, columna, condicion, valor, valor_reemplazo, columna_a_remplazar
+#isinEXC: dataset, lim1, lim2, columna
+#isinRANGE: dataset, lim1, lim2, columna
+#max: dataset, columnmax, nom_condicion, condicion
+#min: dataset, columnmin, nom_condicion, condicion
+#sum: dataset, columnsum, nom_condicion, condicion
+#cumsum: dataset, columnsum, nom_condicion, condicion
+
+
 """
+data=pd.read_csv('data.csv')
 d1=mask(dataset, 'Age', '>=', 50, 0, 'Intensity')
 d1=isinEXC(0,2,'Location')
 d1=isinRANGE(0,2,'Location')
