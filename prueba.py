@@ -1,5 +1,5 @@
 from reto1 import conexion as r
-from reto1 import filtrado
+from reto1 import filtrado as f
 
 #                     ***PRUEBA MÓDULO DE CONEXIÓN***
 
@@ -29,6 +29,7 @@ print(d2)
 
 
 #Remplazar un valor que no cumpla con la condición que se le mande
-#d3=rr.where(d1, 'Age', '>=', 50, 0, 'Intensity')
-#d3=filtrado.max(d2,'Age')
-#print(d3)
+d3=f.where(d1, 'Age', '>=', 50, 'Cambio de valor', 'Type')
+print(d3)
+
+#d3=filtrado.cumsum(d1,'Age')
