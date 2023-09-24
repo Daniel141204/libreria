@@ -110,9 +110,16 @@ def cumsum(dataset, columnsum, nom_condicion=None, condicion=None):
 def dataType(dataset, types):
     data = dataset.select_dtypes(include=types)
     return data
-    
 
-#hy
+def groupncount(dataset, categorias):
+    return dataset.groupby(categorias)[categorias[1]].count()
+
+def groupncount_equal(dataset, categoria, nom_condicion, valor, index):
+    return dataset[dataset[nom_condicion]==valor].groupby(categoria)[index].count()
+
+def groupncount_differ(dataset, categoria, nom_condicion, valor, index):
+    return dataset[dataset[nom_condicion]!=valor].groupby(categoria)[index].count()
+
 
 #***ESTRUCTURA FUNCIONES***
 
@@ -125,6 +132,7 @@ def dataType(dataset, types):
 #sum: dataset, columnsum, nom_condicion, condicion
 #cumsum: dataset, columnsum, nom_condicion, condicion
 #dataType: dataset, tipos de dato (como lista). Ej:['float64', 'int64', 'bool', 'string', 'char', 'object' ])
+
 
 
 """
