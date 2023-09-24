@@ -5,6 +5,7 @@ import numpy as np #Manejo de matrices, vectores y otras operaciones matematicas
 import matplotlib.pyplot as plt #graficación de datos
 import seaborn as sns #mapas de calor
 from reto1 import filtrado as f
+#import filtrado as f
 
 #***FUNCIONES***
 
@@ -54,6 +55,18 @@ def contar(dataset, valor=None, columna=None):
         return (dataset==valor).sum().sum()
     else:
         return (dataset[columna]==valor).sum()
+    
+def cajasBigotes(dataset, columna):
+    sns.set(style='whitegrid', palette='OrRd')
+    ax = sns.boxplot(x=dataset[columna], showmeans=True, showfliers=True, meanprops={"marker":"o","markerfacecolor":"white", "markeredgecolor":"coral"})
+    ax.set_xlabel(columna)
+    ax.set_title('Diagrama de cajas y bigotes de '+columna)
+    plt.show()
+
+def valoresConsecutivos(dataset, columna, valor=None):
+    consecutivos = ((dataset[columna] == valor) & ((dataset[columna].shift(1) == valor) | (dataset[columna].shift(-1) == valor)))
+    consecutivos_dataset = dataset[consecutivos]
+    return consecutivos_dataset[consecutivos_dataset[columna] == valor].dropna()
 
 #***ESTRUCTURA FUNCIONES***
 
@@ -62,13 +75,13 @@ def contar(dataset, valor=None, columna=None):
 #maxvalue: dataset, columnmax, nom_condicion, condicion
 #minvalue: dataset, columnmin, nom_condicion, condicion
 #contar: dataset, valor, columna
+#cajaBigotes: dataset, columna
+#valoresConsecutivos: dataset, columna, valor
 
-d1=pd.read_csv('data.csv',nrows=100)
-#print(contar(d1,2))
 """
+d1=pd.read_csv('data.csv')
+print(valoresConsecutivos(d1,'Intensity',2))
 mapamedia(d1)
-
-
 mapacalor(d1)
 mapacalor(d1,50)
 mapacalor(d1,None,16)

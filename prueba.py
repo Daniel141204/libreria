@@ -32,6 +32,10 @@ print(d2)
     #min: dataset, columnmin, nom_condicion, condicion
     #sum: dataset, columnsum, nom_condicion, condicion
     #cumsum: dataset, columnsum, nom_condicion, condicion
+    #dataType: dataset, tipos de dato (como lista). Ej:['float64', 'int64', 'bool', 'string', 'char', 'object', 'number' ])
+    #groupncount: dataset, categorias (como lista). Ej:['Age', 'Type']
+    #groupncount_equal: dataset, categoria, nom_condicion, valor, index
+    #groupncount_differ: dataset, categoria, nom_condicion, valor, index
 
 
 #Remplazar un valor que no cumpla con la condición que se le mande
@@ -199,40 +203,40 @@ print(d32)
 
 #Mapa de calor sin valores NaN
 print("Función mapacalor:\n")
-d32=i.mapacalor(d1)
-print(d32)
+d33=i.mapacalor(d19)
+print(d33)
 
 #Mapa de calor valor media
 print("Función mapamedia:\n")
-d33=i.mapamedia(d1)
-print(d33)
+d34=i.mapamedia(d1)
+print(d34)
 
 #Obtener valor máximo (solamente el valor)
 print("Función maxvalue:\n")
-d34=i.maxvalue(d1, 'Age')
-print(d34)
+d35=i.maxvalue(d1, 'Age')
+print(d35)
 
 #Obtener valor máximo (solamente el valor) con una condición
 print("Función maxvalue + condición:\n")
-d35=i.maxvalue(d1, 'Age', 'Intensity', 1)
-print(d35)
+d36=i.maxvalue(d1, 'Age', 'Intensity', 1)
+print(d36)
 
 #Obtener valor mínimo (solamente el valor)
 print("Función minvalue:\n")
-d36=i.minvalue(d1, 'Age')
-print(d36)
+d37=i.minvalue(d1, 'Age')
+print(d37)
 
 #Obtener valor mínimo (solamente el valor) con una condición
 print("Función minvalue + condición:\n")
-d37=i.minvalue(d1, 'Age', 'Intensity', 1)
-print(d37)
+d38=i.minvalue(d1, 'Age', 'Intensity', 1)
+print(d38)
 
 #Contar valores
 print("Función contar:\n")
-d38=i.contar(d1, 2)
-print(d38)
+d39=i.contar(d1, 2)
+print(d39)
 
 #Contar valores en una columna
 print("Función contar:\n")
-d39=i.contar(d1, 30, 'Age')
-print(d39)
+d40=i.contar(d1, 30, 'Age')
+print(d40)

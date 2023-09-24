@@ -131,7 +131,10 @@ def groupncount_differ(dataset, categoria, nom_condicion, valor, index):
 #min: dataset, columnmin, nom_condicion, condicion
 #sum: dataset, columnsum, nom_condicion, condicion
 #cumsum: dataset, columnsum, nom_condicion, condicion
-#dataType: dataset, tipos de dato (como lista). Ej:['float64', 'int64', 'bool', 'string', 'char', 'object' ])
+#dataType: dataset, tipos de dato (como lista). Ej:['float64', 'int64', 'bool', 'string', 'char', 'object', 'number' ])
+#groupncount: dataset, categorias (como lista). Ej:['Age', 'Type']
+#groupncount_equal: dataset, categoria, nom_condicion, valor, index
+#groupncount_differ: dataset, categoria, nom_condicion, valor, index
 
 
 
