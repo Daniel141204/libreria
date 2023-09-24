@@ -69,7 +69,7 @@ def isinRANGE(dataset,lim1,lim2,columna=None):
 
 def max(dataset, columnmax, nom_condicion=None, condicion=None):
     if not nom_condicion and not condicion:
-        resultado=dataset[columnmax].max()
+        resultado=dataset[dataset[columnmax]==dataset[columnmax].max()]
     elif (nom_condicion and not condicion) or (not nom_condicion and condicion):
         resultado=False
     else:
@@ -79,7 +79,7 @@ def max(dataset, columnmax, nom_condicion=None, condicion=None):
 
 def min(dataset, columnmin, nom_condicion=None, condicion=None):
     if not nom_condicion and not condicion:
-        resultado=dataset[columnmin].min()
+        resultado=dataset[dataset[columnmin]==dataset[columnmin].min()]
     elif (nom_condicion and not condicion) or (not nom_condicion and condicion):
         resultado=False
     else:
@@ -121,11 +121,11 @@ def cumsum(dataset, columnsum, nom_condicion=None, condicion=None):
 #cumsum: dataset, columnsum, nom_condicion, condicion
 
 
-
+"""
 data=pd.read_csv('data.csv')
 d1=where(data, 'Age', '>=', 50, 0, 'Intensity')
 print(d1)
-"""
+
 d1=isinEXC(0,2,'Location')
 d1=isinRANGE(0,2,'Location')
 

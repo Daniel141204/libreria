@@ -57,7 +57,7 @@ print(d7)
 
 #Busca el máximo de una columna con una condición
 print("Función en columna + condición:\n")
-d8=f.max(d1, 'Age','Intensity', 3)
+d8=f.max(d1, 'Age','Intensity', 2)
 print(d8)
 
 #Busca el mínimo de una columna
