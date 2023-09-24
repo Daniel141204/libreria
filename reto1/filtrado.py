@@ -107,6 +107,11 @@ def cumsum(dataset, columnsum, nom_condicion=None, condicion=None):
 
     return resultado
 
+def dataType(dataset, types):
+    data = dataset.select_dtypes(include=types)
+    return data
+    
+
 
 
 #***ESTRUCTURA FUNCIONES***
@@ -119,6 +124,7 @@ def cumsum(dataset, columnsum, nom_condicion=None, condicion=None):
 #min: dataset, columnmin, nom_condicion, condicion
 #sum: dataset, columnsum, nom_condicion, condicion
 #cumsum: dataset, columnsum, nom_condicion, condicion
+#dataType: dataset, tipos de dato (como lista). Ej:['float64', 'int64', 'bool', 'string', 'char', 'object' ])
 
 
 """

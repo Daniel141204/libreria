@@ -7,7 +7,7 @@ from reto1 import filtrado as f
 
 #Abrir archivo local
 print("Dataset local:\n")
-d1=r.openCSV("data.csv",None,None,100)
+d1=r.openCSV("data.csv",None,None,170)
 print(d1)
 
 #Abrir archivo remoto
@@ -89,3 +89,8 @@ print(d13)
 print("Función en columna + condición:\n")
 d14=f.cumsum(d1, 'Age', 'Intensity', 2)
 print(d14)
+
+#Generación de un dataset con valores númericos a partir de otro dataset
+print("Función DataType:\n")
+d15=f.dataType(d1, ['int64'])
+print(d15)
