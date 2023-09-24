@@ -94,3 +94,5 @@ print(d14)
 print("Función DataType:\n")
 d15=f.dataType(d1, ['int64'])
 print(d15)
+
+#hy

@@ -80,5 +80,5 @@ def openCSV(nombre=None, codigo=None, Index=None, limite=None): #Parametros nomb
 #d1=openCSV('www.datos.gov.co','9ssf-i6c5','cedula', 20)
 #d1=openCSV('data.csv', None, None, 20)
 #print(d1)
-
+#hy
 
