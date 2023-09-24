@@ -62,9 +62,18 @@ def contar(dataset, valor=None, columna=None):
         else:
             return (dataset[columna]==valor).sum()
     
-def cajasBigotes(dataset, columna):
+"""def cajasBigotes(dataset, columna):
     sns.set(style='whitegrid', palette='OrRd')
     ax = sns.boxplot(x=dataset[columna], showmeans=True, showfliers=True, meanprops={"marker":"o","markerfacecolor":"white", "markeredgecolor":"coral"})
+    ax.set_xlabel(columna)
+    ax.set_title('Diagrama de cajas y bigotes de '+columna)
+    plt.show()"""
+
+def cajasBigotes(dataset, columna):
+    sns.set(style='whitegrid')
+    cmap = sns.color_palette("icefire", as_cmap=True)
+    cmap_list = cmap(np.linspace(0, 1, 10)).tolist()
+    ax = sns.boxplot(x=dataset[columna], showmeans=True, showfliers=True, meanprops={"marker":"o","markerfacecolor":"white", "markeredgecolor":"coral"}, palette=cmap_list)
     ax.set_xlabel(columna)
     ax.set_title('Diagrama de cajas y bigotes de '+columna)
     plt.show()

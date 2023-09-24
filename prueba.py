@@ -241,5 +241,19 @@ print("Función contar:\n")
 d40=i.contar(d1, 30, 'Age')
 print(d40)
 
-d41=i.valoresConsecutivos(d19,'Age')
-print (d41)
+#Crea un diagrama de cajas y bigotes
+print("Función cajasBigotes:\n")
+d41=i.cajasBigotes(d1, 'Age')
+print(d41)
+
+#Cuenta los valores consecutivos NaN en una columna
+print("Función valoresConsecutivos:\n")
+d42=i.valoresConsecutivos(d19,'Age')
+print (d42)
+
+#Cuenta los valores consecutivos NaN en una columna con un valor
+print("Función valoresConsecutivosValor:\n")
+d43=i.valoresConsecutivos(d19,'Age',40)
+print (d43)
+
+
