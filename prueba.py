@@ -1,6 +1,8 @@
 from reto1 import conexion as r
 from reto1 import filtrado as f
 from reto1 import limpieza as l
+from reto1 import informacion as i
+
 
 
 #                     ***PRUEBA MÓDULO DE CONEXIÓN***
@@ -190,4 +192,47 @@ print(d31)
     #minvalue: dataset, columnmin, nom_condicion, condicion
     #contar: dataset, valor, columna
 
+#Mapa de calor con valores NaN
+print("Función mapacalor:\n")
+d32=i.mapacalor(d1, 50, 70, "EXC")
+print(d32)
 
+#Mapa de calor sin valores NaN
+print("Función mapacalor:\n")
+d32=i.mapacalor(d1)
+print(d32)
+
+#Mapa de calor valor media
+print("Función mapamedia:\n")
+d33=i.mapamedia(d1)
+print(d33)
+
+#Obtener valor máximo (solamente el valor)
+print("Función maxvalue:\n")
+d34=i.maxvalue(d1, 'Age')
+print(d34)
+
+#Obtener valor máximo (solamente el valor) con una condición
+print("Función maxvalue + condición:\n")
+d35=i.maxvalue(d1, 'Age', 'Intensity', 1)
+print(d35)
+
+#Obtener valor mínimo (solamente el valor)
+print("Función minvalue:\n")
+d36=i.minvalue(d1, 'Age')
+print(d36)
+
+#Obtener valor mínimo (solamente el valor) con una condición
+print("Función minvalue + condición:\n")
+d37=i.minvalue(d1, 'Age', 'Intensity', 1)
+print(d37)
+
+#Contar valores
+print("Función contar:\n")
+d38=i.contar(d1, 2)
+print(d38)
+
+#Contar valores en una columna
+print("Función contar:\n")
+d39=i.contar(d1, 30, 'Age')
+print(d39)

@@ -4,7 +4,7 @@ import pandas as pd #Manejo de datasets
 import numpy as np #Manejo de matrices, vectores y otras operaciones matematicas
 import matplotlib.pyplot as plt #graficación de datos
 import seaborn as sns #mapas de calor
-import filtrado as f
+from reto1 import filtrado as f
 
 #***FUNCIONES***
 
@@ -61,12 +61,14 @@ def contar(dataset, valor=None, columna=None):
 #mapacalor: dataset
 #maxvalue: dataset, columnmax, nom_condicion, condicion
 #minvalue: dataset, columnmin, nom_condicion, condicion
+#contar: dataset, valor, columna
 
 d1=pd.read_csv('data.csv',nrows=100)
 #print(contar(d1,2))
+"""
 mapamedia(d1)
 
-"""
+
 mapacalor(d1)
 mapacalor(d1,50)
 mapacalor(d1,None,16)
