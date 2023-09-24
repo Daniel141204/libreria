@@ -56,8 +56,6 @@ def dropValue(dataset, valor):
 
 #Función que borre el valor deseado en una columna especifica
 
-import numpy as np
-import pandas as pd
 
 def dropValueColumna(dataset, valor, columna):
     dataset[columna].replace(valor, np.nan, inplace=True)
