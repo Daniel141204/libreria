@@ -52,9 +52,15 @@ def minvalue(dataset, columnmin=None, nom_condicion=None, condicion=None):
 
 def contar(dataset, valor=None, columna=None):
     if not columna:
-        return (dataset==valor).sum().sum()
+        if valor is None:
+            return dataset.isna().sum().sum()
+        else:    
+            return (dataset==valor).sum().sum()
     else:
-        return (dataset[columna]==valor).sum()
+        if valor is None:
+            return dataset[columna].isna().sum()
+        else:
+            return (dataset[columna]==valor).sum()
     
 def cajasBigotes(dataset, columna):
     sns.set(style='whitegrid', palette='OrRd')
@@ -64,9 +70,14 @@ def cajasBigotes(dataset, columna):
     plt.show()
 
 def valoresConsecutivos(dataset, columna, valor=None):
-    consecutivos = ((dataset[columna] == valor) & ((dataset[columna].shift(1) == valor) | (dataset[columna].shift(-1) == valor)))
-    consecutivos_dataset = dataset[consecutivos]
-    return consecutivos_dataset[consecutivos_dataset[columna] == valor].dropna()
+    if valor is None:
+        consecutivos = ((dataset[columna].isna()) & ((dataset[columna].shift(1).isna()) | (dataset[columna].shift(-1).isna())))
+        consecutivos_dataset = dataset[consecutivos]
+        return consecutivos_dataset[consecutivos_dataset[columna].isna()]
+    else:    
+        consecutivos = ((dataset[columna] == valor) & ((dataset[columna].shift(1) == valor) | (dataset[columna].shift(-1) == valor)))
+        consecutivos_dataset = dataset[consecutivos]
+        return consecutivos_dataset[consecutivos_dataset[columna] == valor].dropna()
 
 #***ESTRUCTURA FUNCIONES***
 

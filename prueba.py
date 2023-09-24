@@ -240,3 +240,6 @@ print(d39)
 print("Función contar:\n")
 d40=i.contar(d1, 30, 'Age')
 print(d40)
+
+d41=i.valoresConsecutivos(d19,'Age')
+print (d41)
