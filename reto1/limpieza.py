@@ -8,6 +8,50 @@ import seaborn as sns #mapas de calor
 
 #FUNCIONES
 
+#Función que genera nan aleatorios en todo el dataset
+
+def nanAleatorio(dataset, porcentaje):
+    # Generar valores aleatorios
+    aleatorios = np.random.rand(*dataset.shape)
+
+    # Convertir algunos valores en NaN
+    aleatorios[aleatorios < porcentaje] = np.nan
+
+    # Crear un nuevo DataFrame con los valores aleatorios
+    return pd.DataFrame(aleatorios, columns=dataset.columns)
+
+#Función que genera nan aleatorios en columnas específicas
+
+def nanAleatorioColumna(dataset, porcentaje, columna):
+    # Generar valores aleatorios
+    aleatorios = np.random.rand(len(dataset))
+
+    # Convertir algunos valores en NaN
+    aleatorios[aleatorios < porcentaje] = np.nan
+
+    # Crear una Serie con los valores aleatorios
+    serie_aleatorios = pd.Series(aleatorios)
+
+    # Asignar la Serie aleatoria a la columna específica
+    dataset[columna] = serie_aleatorios
+
+    return dataset
+
+#Función que genera nan aleatorios en filas específicas
+
+def nanAleatorioFila(dataframe, porcentaje, filas):
+    # Generar valores aleatorios
+    aleatorios = np.random.rand(len(filas), len(dataframe.columns))
+
+    # Convertir algunos valores en NaN
+    aleatorios[aleatorios < porcentaje] = np.nan
+
+    # Crear un nuevo DataFrame con los valores aleatorios
+    df_aleatorios = pd.DataFrame(aleatorios, columns=dataframe.columns)
+
+    # Combinar el DataFrame aleatorio con el DataFrame original
+    return pd.concat([dataframe.drop(index=filas), df_aleatorios], axis=0)
+
 #Funcion que nos deja eliminar las filas que tengan algun nan
 def dropNanALGUN(dataset):
     #dataset.dropna(axis=0, how='any', inplace=False)
@@ -56,19 +100,14 @@ def dropValue(dataset, valor):
 
 #Función que borre el valor deseado en una columna especifica
 
-
 def dropValueColumna(dataset, valor, columna):
     dataset[columna].replace(valor, np.nan, inplace=True)
     dataset.dropna(subset=[columna], inplace=True)
     return dataset
 
-
+""""
 data=pd.read_csv('data.csv')
-for i in range(100):
-  data.iloc[[np.random.randint(1, 400)],[0]] = np.nan
-  data.iloc[[np.random.randint(1, 400)],[1]] = np.nan
-  data.iloc[[np.random.randint(1, 400)],[2]] = np.nan
-  data.iloc[[np.random.randint(1, 400)],[3]] = np.nan
+
 d4=dropNanALGUN(data)
 print(d4)
 
@@ -99,4 +138,12 @@ print(d12)
 d13=dropValueColumna(data, 3, 'Intensity')
 print(d13)
 
-#hy
+d14=nanAleatorio(data, 0.5)
+print(d14)
+
+d15 = nanAleatorioColumna(data, 0.5, "Duration")
+print(d15)
+
+d16 = nanAleatorioFila(data, 0.7, [0, 1, 2])
+print(d16)
+"""

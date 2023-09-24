@@ -1,5 +1,7 @@
 from reto1 import conexion as r
 from reto1 import filtrado as f
+from reto1 import limpieza as l
+
 
 #                     ***PRUEBA MÓDULO DE CONEXIÓN***
 
@@ -95,4 +97,97 @@ print("Función DataType:\n")
 d15=f.dataType(d1, ['int64'])
 print(d15)
 
-#hy
+#                     ***PRUEBA MÓDULO DE LIMPIEZA***
+
+#***ESTRUCTURA FUNCIONES***
+
+    #nanAleatorio: dataset, probabilidad
+    #nanAleatorioColumna: dataset, probabilidad, columna
+    #nanAleatorioFila: dataset, probabilidad, filas
+    #dropNanALGUN: dataset
+    #dropNanTODOS: dataset
+    #dropNanALGUNCOL: dataset
+    #dropNanTODOSCOL: dataset
+    #fillNan: dataset, valor
+    #fillna_numericas: dataset
+    #fillNanBack: dataset, limite
+    #fillNanFront: dataset, limite
+    #dropValue: dataset, valor
+    #dropValueColumna: dataset, valor, columna
+
+#Generación de valores NaN aleatorios en todo el dataset
+print("Función nanAleatorio:\n")
+d19=l.nanAleatorio(d1, 0.5)
+print(d19)
+
+#Generación de valores NaN aleatorios en una columna
+print("Función nanAleatorioColumna:\n")
+d20=l.nanAleatorioColumna(d1, 0.5, "Duration")
+print(d20)
+
+#Generación de valores NaN aleatorios en una fila
+print("Función nanAleatorioFila:\n")
+d21=l.nanAleatorioFila(d1, 0.7, [0, 1, 2])
+print(d21)
+
+#Borrar filas con algún valor NaN
+print("Función dropNanALGUN:\n")
+d22=l.dropNanALGUN(d1)
+print(d22)
+
+#Borrar filas con todos los valores NaN
+print("Función dropNanTODOS:\n")
+d23=l.dropNanTODOS(d1)
+print(d23)
+
+#Borrar columnas con algún valor NaN
+print("Función dropNanALGUNCOL:\n")
+d24=l.dropNanALGUNCOL(d1)
+print(d24)
+
+#Borrar columnas con todos los valores NaN
+print("Función dropNanTODOSCOL:\n")
+d25=l.dropNanTODOSCOL(d1)
+print(d25)
+
+#Rellenar los valores NaN con un valor fijo
+print("Función fillNan:\n")
+d26=l.fillNan(d1, 435)
+print(d26)
+
+#Rellenar los valores NaN con el valor de la media
+print("Función fillna_numericas:\n")
+d27=l.fillna_numericas(d1)
+print(d27)
+
+#Rellenar los valores NaN con el valor de atrás proyectando el valor hacia atrás hasta un limite definido por el usuario
+print("Función fillNanBack:\n")
+d28=l.fillNanBack(d1, 2)
+print(d28)
+
+#Rellenar los valores NaN con el valor de adelante proyectando el valor hacia adelante hasta un limite definido por el usuario
+print("Función fillNanFront:\n")
+d29=l.fillNanFront(d1, 2)
+print(d29)
+
+#Borrar en todo el dataset un valor fijo que el usuario defina
+print("Función dropValue:\n")
+d30=l.dropValue(d1, 3)
+print(d30)
+
+#Borrar el valor deseado en una columna especifica
+print("Función dropValueColumna:\n")
+d31=l.dropValueColumna(d1, 3, 'Intensity')
+print(d31)
+
+#                     ***PRUEBA MÓDULO DE INFORMACIÓN***
+
+#***ESTRUCTURA FUNCIONES***
+
+    #mapacalor: dataset, lim1, lim2, type(en rango o exclusivo)
+    #mapacalor: dataset
+    #maxvalue: dataset, columnmax, nom_condicion, condicion
+    #minvalue: dataset, columnmin, nom_condicion, condicion
+    #contar: dataset, valor, columna
+
+
