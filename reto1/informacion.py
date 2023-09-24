@@ -48,6 +48,13 @@ def minvalue(dataset, columnmin=None, nom_condicion=None, condicion=None):
         resultado= f.min(dataset, columnmin, nom_condicion, condicion)[columnmin].min()
     return resultado
 
+
+def contar(dataset, valor=None, columna=None):
+    if not columna:
+        return (dataset==valor).sum().sum()
+    else:
+        return (dataset[columna]==valor).sum()
+
 #***ESTRUCTURA FUNCIONES***
 
 #mapacalor: dataset, lim1, lim2, type(en rango o exclusivo)       
@@ -56,6 +63,7 @@ def minvalue(dataset, columnmin=None, nom_condicion=None, condicion=None):
 #minvalue: dataset, columnmin, nom_condicion, condicion
 
 d1=pd.read_csv('data.csv')
+print(contar(d1,2))
 #mapamedia(d1)
 
 """
@@ -65,4 +73,3 @@ mapacalor(d1,None,16)
 mapacalor(d1,30,42,"EXC")
 mapacalor(d1,30,42)
 """
-#hy
