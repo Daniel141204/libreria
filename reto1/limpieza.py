@@ -50,6 +50,19 @@ def fillNanBack(dataset, limite):
 def fillNanFront(dataset, limite):
     return dataset.fillna(method='ffill', limit=limite)
 
+#Función que borre en todo el dataset un valor fijo que el usuario defina
+def dropValue(dataset, valor):
+    return dataset.replace(valor, np.nan).dropna(axis=0, how='any', inplace=False)
+
+#Función que borre el valor deseado en una columna especifica
+
+import numpy as np
+import pandas as pd
+
+def dropValueColumna(dataset, valor, columna):
+    dataset[columna].replace(valor, np.nan, inplace=True)
+    dataset.dropna(subset=[columna], inplace=True)
+    return dataset
 
 
 data=pd.read_csv('data.csv')
@@ -81,5 +94,11 @@ print(d10)
 
 d11=fillNanFront(data, 2)
 print(d11)
+
+d12=dropValue(data, 3)
+print(d12)
+
+d13=dropValueColumna(data, 3, 'Intensity')
+print(d13)
 
 #hy
