@@ -24,10 +24,10 @@ def mapacalor(dataset, lim1=None, lim2=None, type="RANGE"):
 
 #Mapa de calor media
 def mapamedia(dataset):
-    data_numerica = f.dataType(dataset, ['int64'])
+    data_numerica = f.dataType(dataset, ['number'])
     distancia = data_numerica.sub(data_numerica.mean())
-    sns.heatmap(distancia, annot=True,cbar=False)
-    sns.set(font_scale=0.8)
+    sns.heatmap(distancia, cbar=False)
+    sns.set(font_scale=0.5)
     for i, media in enumerate(data_numerica.mean()):
         plt.text(i + 0.5, len(data_numerica) + 0.5, f'{media:.2f}', ha='center', va='top')
     plt.show()
@@ -62,9 +62,9 @@ def contar(dataset, valor=None, columna=None):
 #maxvalue: dataset, columnmax, nom_condicion, condicion
 #minvalue: dataset, columnmin, nom_condicion, condicion
 
-d1=pd.read_csv('data.csv')
-print(contar(d1,2))
-#mapamedia(d1)
+d1=pd.read_csv('data.csv',nrows=100)
+#print(contar(d1,2))
+mapamedia(d1)
 
 """
 mapacalor(d1)
