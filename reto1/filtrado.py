@@ -1,3 +1,5 @@
+## Ana Laura Morcote Chacón 20221020010 y Daniel Felipe Zárate Beltrán 20221020086
+
 #***LIBRERÍAS***
 
 import pandas as pd #Manejo de datasets
@@ -30,6 +32,8 @@ def where(dataset, columna, condicion, valor, valor_reemplazo, columna_a_remplaz
        
     return resultado
 
+#funcion que mediante where todo lo que cumpla con la condición se reemplaza
+
 def mask(dataset, columna, condicion, valor, valor_reemplazo, columna_a_remplazar=None):
     # Diccionario que asocia cada tipo de condición con la función correspondiente de pandas
     condiciones = {
@@ -53,12 +57,16 @@ def mask(dataset, columna, condicion, valor, valor_reemplazo, columna_a_remplaza
        
     return resultado
 
+#Función que busca valores dentro de unos valores exclusivos
+
 def isinEXC(dataset,lim1,lim2,columna=None):
     if not columna:
         resultado=dataset.isin([lim1,lim2])
     else:
         resultado=dataset.isin({columna: [lim1, lim2]})
     return resultado
+
+#Función que busca valores dentro de un rango
 
 def isinRANGE(dataset,lim1,lim2,columna=None):
     if not columna:

@@ -1,3 +1,5 @@
+## Ana Laura Morcote Chacón 20221020010 y Daniel Felipe Zárate Beltrán 20221020086
+
 from reto1 import conexion as r
 from reto1 import filtrado as f
 from reto1 import limpieza as l
@@ -253,7 +255,7 @@ print (d42)
 
 #Cuenta los valores consecutivos NaN en una columna con un valor
 print("Función valoresConsecutivosValor:\n")
-d43=i.valoresConsecutivos(d19,'Age',40)
+d43=i.valoresConsecutivos(d19,'Age',30)
 print (d43)
 
 

@@ -1,3 +1,5 @@
+## Ana Laura Morcote Chacón 20221020010 y Daniel Felipe Zárate Beltrán 20221020086
+
 #***LIBRERÍAS***
 
 import pandas as pd #Manejo de datasets
