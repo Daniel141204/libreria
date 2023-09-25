@@ -105,6 +105,22 @@ print("Función DataType:\n")
 d15=f.dataType(d1, ['int64'])
 print(d15)
 
+#Función que cuenta elementos agrupados según una lista de categorías que le manden
+print("Función GroupNCount:\n")
+d16=f.groupncount(d1, ['Age', 'Type'])
+print(d16)
+
+#Función que cuenta elementos agrupados según un categoría que le manden y una condición
+print("Función GroupNCount_equal:\n")
+d17=f.groupncount_equal(d1, 'Age','Intensity', 3, 'Age')
+print(d17)
+
+#Función que cuenta elementos agrupados según un categoría que le manden y una condición que no se cumple
+print("Función GroupNCount_differ:\n")
+d18=f.groupncount_differ(d1, 'Age','Intensity', 3, 'Age')
+print(d18)
+
+
 #                     ***PRUEBA MÓDULO DE LIMPIEZA***
 
 #***ESTRUCTURA FUNCIONES***
@@ -125,67 +141,67 @@ print(d15)
 
 #Generación de valores NaN aleatorios en todo el dataset
 print("Función nanAleatorio:\n")
-d19=l.nanAleatorio(d1, 0.5)
+d19=l.nanAleatorio(d1.copy(), 0.5)
 print(d19)
 
 #Generación de valores NaN aleatorios en una columna
 print("Función nanAleatorioColumna:\n")
-d20=l.nanAleatorioColumna(d1, 0.5, "Duration")
+d20=l.nanAleatorioColumna(d1.copy(), 0.5, "Duration")
 print(d20)
 
 #Generación de valores NaN aleatorios en una fila
 print("Función nanAleatorioFila:\n")
-d21=l.nanAleatorioFila(d1, 0.7, [0, 1, 2])
+d21=l.nanAleatorioFila(d1.copy(), 0.7, [0, 1, 2])
 print(d21)
 
 #Borrar filas con algún valor NaN
 print("Función dropNanALGUN:\n")
-d22=l.dropNanALGUN(d1)
+d22=l.dropNanALGUN(d19.copy())
 print(d22)
 
 #Borrar filas con todos los valores NaN
 print("Función dropNanTODOS:\n")
-d23=l.dropNanTODOS(d1)
+d23=l.dropNanTODOS(d19.copy())
 print(d23)
 
 #Borrar columnas con algún valor NaN
 print("Función dropNanALGUNCOL:\n")
-d24=l.dropNanALGUNCOL(d1)
+d24=l.dropNanALGUNCOL(d19.copy())
 print(d24)
 
 #Borrar columnas con todos los valores NaN
 print("Función dropNanTODOSCOL:\n")
-d25=l.dropNanTODOSCOL(d1)
+d25=l.dropNanTODOSCOL(d19.copy())
 print(d25)
 
 #Rellenar los valores NaN con un valor fijo
 print("Función fillNan:\n")
-d26=l.fillNan(d1, 435)
+d26=l.fillNan(d19.copy(), 435)
 print(d26)
 
 #Rellenar los valores NaN con el valor de la media
 print("Función fillna_numericas:\n")
-d27=l.fillna_numericas(d1)
+d27=l.fillna_numericas(d19.copy())
 print(d27)
 
 #Rellenar los valores NaN con el valor de atrás proyectando el valor hacia atrás hasta un limite definido por el usuario
 print("Función fillNanBack:\n")
-d28=l.fillNanBack(d1, 2)
+d28=l.fillNanBack(d19.copy(), 2)
 print(d28)
 
 #Rellenar los valores NaN con el valor de adelante proyectando el valor hacia adelante hasta un limite definido por el usuario
 print("Función fillNanFront:\n")
-d29=l.fillNanFront(d1, 2)
+d29=l.fillNanFront(d21.copy(), 2)
 print(d29)
 
 #Borrar en todo el dataset un valor fijo que el usuario defina
 print("Función dropValue:\n")
-d30=l.dropValue(d1, 3)
+d30=l.dropValue(d1.copy(), 3)
 print(d30)
 
 #Borrar el valor deseado en una columna especifica
 print("Función dropValueColumna:\n")
-d31=l.dropValueColumna(d1, 3, 'Intensity')
+d31=l.dropValueColumna(d1.copy(), 3, 'Intensity')
 print(d31)
 
 #                     ***PRUEBA MÓDULO DE INFORMACIÓN***
@@ -253,9 +269,9 @@ print("Función valoresConsecutivos:\n")
 d42=i.valoresConsecutivos(d19,'Age')
 print (d42)
 
-#Cuenta los valores consecutivos NaN en una columna con un valor
+#Cuenta los valores consecutivos personalizados en una columna con un valor
 print("Función valoresConsecutivosValor:\n")
-d43=i.valoresConsecutivos(d19,'Age',30)
+d43=i.valoresConsecutivos(d1,'Intensity',2)
 print (d43)
 
 
